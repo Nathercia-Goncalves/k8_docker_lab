@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-deployment
+  namespace: rdisi
+  labels:
+    app: lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab
+  template:
+    metadata:
+      labels:
+        app: lab
+    spec:
+      containers:
+      - name: lab
+        image: 183804119221.dkr.ecr.us-east-1.amazonaws.com/lab:v2
+        ports:
+        - containerPort: 80
