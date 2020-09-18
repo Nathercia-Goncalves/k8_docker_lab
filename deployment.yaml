@@ -17,6 +17,18 @@ spec:
     spec:
       containers:
       - name: lab
-        image: 183804119221.dkr.ecr.us-east-1.amazonaws.com/lab:v2
+        image: 
         ports:
         - containerPort: 80
+          volumeMounts:
+        - mountPath: /var/www/html/index.html
+          name: lab-volume
+          subPath: index.html
+        imagePullPolicy: IfNotPresent
+      volumes:
+      - configMap:
+          items:
+          - key: index.html
+            path: index.html
+          name: lab-configmap
+        name: lab-volume  
