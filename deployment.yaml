@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
         - name: lab-container
-          image: 
+          image:
           ports:
           - containerPort: 80
           volumeMounts:
-          - mountPath: /var/www/index.html
+          - mountPath: /var/www/html/index.html
             name: lab-volumen
             subPath: index.html
       volumes:
