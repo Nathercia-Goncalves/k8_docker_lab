@@ -1,34 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lab-deployment
-  namespace: rdisi
+  name: deployment-lab
+  namespace: ngoncalves
   labels:
     app: lab
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: lab
+  replicas: 1
   template:
     metadata:
       labels:
         app: lab
     spec:
       containers:
-      - name: lab
-        image: 
-        ports:
-        - containerPort: 80
+        - name: lab-container
+          image: 
+          ports:
+          - containerPort: 80
           volumeMounts:
-        - mountPath: /var/www/html/index.html
-          name: lab-volume
-          subPath: index.html
-        imagePullPolicy: IfNotPresent
+          - mountPath: /var/www/index.html
+            name: lab-volumen
+            subPath: index.html
       volumes:
       - configMap:
           items:
           - key: index.html
             path: index.html
           name: lab-configmap
-        name: lab-volume  
+        name: lab-volumen
